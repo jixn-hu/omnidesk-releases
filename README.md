@@ -6,12 +6,12 @@ OmniDesk 是用于管理 Windows 远程桌面与 Linux SSH 的桌面工作台，
 
 ## 下载与安装
 
-在本仓库的 **Releases → Latest** 下载最新 Windows x64 安装版。当前版本为 **0.6.2**，文件名为 `OmniDesk-0.6.2-win-x64.exe`，无需 GitHub 登录。
+在本仓库的 **Releases → Latest** 下载最新 Windows x64 安装版。当前版本为 **0.6.3**，文件名为 `OmniDesk-0.6.3-win-x64.exe`，无需 GitHub 登录。
 
 安装前将以下结果与同页 `SHA256SUMS.txt` 对应行比较：
 
 ```powershell
-Get-FileHash -LiteralPath '.\OmniDesk-0.6.2-win-x64.exe' -Algorithm SHA256
+Get-FileHash -LiteralPath '.\OmniDesk-0.6.3-win-x64.exe' -Algorithm SHA256
 ```
 
 安装程序尚未数字签名。请核对来源和校验值，不要关闭 Windows 防护。升级前导出加密配置备份并保存备份密码，结束会话、退出旧版后再安装；不要删除本机连接或公共凭据。
@@ -20,7 +20,7 @@ Get-FileHash -LiteralPath '.\OmniDesk-0.6.2-win-x64.exe' -Algorithm SHA256
 
 从 0.6.2 开始，「设置 → 软件更新」使用默认更新源 `jixn-hu/omnidesk-releases`，只检查正式 Release。下载、安装均由用户确认，不会自动关闭远程会话，也不上传连接配置或凭据。旧版本首次迁移请从本仓库手动下载安装。
 
-0.6.2 新增统一紧凑布局、界面主题 / 字体 / 缩放、SSH 字体字号与配色实时调整；详见 Release 更新说明。
+0.6.3 修正远端复制文件即自动下载的问题：复制后只提示待接收，点击「接收到本机」才传输，完成后再在本机文件夹粘贴；远端内部复制 / 粘贴不受影响。保留 0.6.2 的统一紧凑布局、主题 / 字体 / 缩放及 SSH 配色实时调整，详见 Release 更新说明。
 
 ## 隐私与第三方组件
 
