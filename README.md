@@ -1,39 +1,41 @@
-# OmniDesk 安装包
+# OmniDesk
 
-OmniDesk 是管理 Windows 远程桌面与 Linux SSH 的桌面工作台，支持多会话、AI 助手、公共凭据、远程文件管理、加密备份和 WebDAV 同步。无需注册官方账号即可使用本地连接功能。
+Windows 与 Linux 远程连接工作台：集中管理服务器、终端、文件和远程桌面，并在会话内使用 AI 助手。
 
-本仓库用于分发安装包和更新说明。客户端与账号后台源码保留在私有仓库。
+**[下载 Windows x64 0.6.15](https://github.com/jixn-hu/omnidesk-releases/releases/tag/v0.6.15)** · **[MIT 开源客户端](https://github.com/jixn-hu/omnidesk-source)** · **[同事介绍与上手指南](https://github.com/jixn-hu/omnidesk-source/blob/main/docs/同事介绍/OmniDesk-同事介绍与上手指南.md)**
 
-## 下载与安装
+## 能做什么
 
-在本仓库的 [Releases → Latest](https://github.com/jixn-hu/omnidesk-releases/releases/latest) 下载 Windows x64 安装版。当前版本为 **0.6.13**，文件名为 `OmniDesk-0.6.13-win-x64.exe`，无需 GitHub 登录。
+- SSH 终端、SFTP 文件管理、端口转发与 Windows RDP 放在一个工作区。
+- 服务器按文件夹、标签或账号整理，拖拽即可改分类；可显示地址、账号、标签与备注。
+- Linux 文件支持拖入上传、目录间移动与拖出下载；同名文件不会直接覆盖。
+- Windows 远端复制后可直接到本机粘贴，需要内容时自动传输；服务器内部复制继续在服务器完成。
+- AI 助手支持多个对话、权限选择与操作确认；Enter 发送、Ctrl+Enter 换行。
+- 连接资料可加密备份；账号配置同步先合并冲突，再上传。
 
-安装前将以下结果与同页 `SHA256SUMS.txt` 对应行比较：
+## 界面预览
 
-```powershell
-Get-FileHash -LiteralPath '.\OmniDesk-0.6.13-win-x64.exe' -Algorithm SHA256
-```
+以下截图使用合成数据，功能与实际连接效果以安装版本和服务器环境为准。
 
-安装程序尚未数字签名。请核对来源和校验值，不要关闭 Windows 防护。升级前导出加密配置备份并保存备份密码，结束会话、退出旧版后再安装；不要删除本机连接或公共凭据。
+![服务器目录](https://raw.githubusercontent.com/jixn-hu/omnidesk-source/main/docs/同事介绍/images/01-servers.png)
 
-## 0.6.13 更新
+![Linux 终端与文件](https://raw.githubusercontent.com/jixn-hu/omnidesk-source/main/docs/同事介绍/images/03-ssh-files.png)
 
-- 设置按八个分组折叠，按需展开并记住状态；公共凭据统一使用侧栏入口。
-- 服务器目录使用多层文件夹，支持逐层折叠、搜索展开和紧凑展示；标签、备注等资料支持批量管理。
-- AI 助手支持多个后台对话、按服务器名称或地址检索、Markdown 排版及对话内确认卡。每轮调用上限默认 200，可配置；只读、编辑、完全三种权限限制可用工具。
-- Linux 查询通过 SSH；Windows 查询通过 WMI/RPC，需要相应远程管理权限。自定义 SSH 命令和删除本机连接需要逐次确认。
-- 改进 FreeRDP 本机通信与运行库检查，SSH 监控改为登录后按需开启。保留远程文件管理、双向剪贴板和主题字体缩放等功能。
+![AI 助手](https://raw.githubusercontent.com/jixn-hu/omnidesk-source/main/docs/同事介绍/images/06-ai-assistant.png)
 
-详细变化、适用条件及验证范围见 [0.6.13 更新说明](https://github.com/jixn-hu/omnidesk-releases/releases/tag/v0.6.13)。Web 管理端与账号后台独立部署，本仓库发布 PC 客户端安装版及配套更新、校验附件。
+## 安装和上手
 
-## 软件更新
+1. 下载 `OmniDesk-0.6.15-win-x64.exe`，用同页 `SHA256SUMS.txt` 核对摘要后运行安装。
+2. 新建 Linux / SSH 或 Windows / RDP 连接，填写服务器地址、端口和凭据。
+3. 在设置选择目录样式和显示信息。Linux 会话使用终端及文件面板；Windows 会话可开启剪贴板重定向。
+4. 使用账号同步时自行配置服务地址，新设备先拉取再上传；升级前导出加密备份并妥善保管密码。
 
-从 0.6.2 开始，「设置 → 软件更新」使用默认更新源 `jixn-hu/omnidesk-releases`，只检查正式 Release。下载和安装由用户确认，不会自动关闭远程会话，也不上传连接配置或凭据。旧版本首次迁移请从本仓库手动下载安装。
+完整步骤与更多截图见上手指南；可下载源码仓库内的 [介绍资料 ZIP](https://github.com/jixn-hu/omnidesk-source/blob/main/docs/OmniDesk-同事介绍资料.zip) 转发给同事。
 
-需要使用完整安装包，不混用旧运行库；本机系统保留的快捷键及服务器不支持的输入能力仍有平台限制。
+安装包目前未数字签名。升级前结束会话并退出旧版，再运行安装程序，保留现有用户数据。软件更新只读取正式 Release，下载和安装由用户确认。
 
-## 隐私与第三方组件
+## 开源与验证
 
-安装包不附带用户账号、密码、私钥或服务器配置；账号服务地址默认留空，由用户自行配置。AI API Key 及对话记录加密保存在本机；模型接收任务需要的资料或查询结果，登记的服务器密码与私钥不会作为资料发送给模型。发布安装包不代表无法逆向提取程序内容，不能把密钥放入应用中。
+客户端以 MIT 开源，构建步骤见 [BUILDING.md](https://github.com/jixn-hu/omnidesk-source/blob/main/docs/BUILDING.md)。账号后台是独立服务，不在本次开源范围内；SSH / RDP 与本机管理可独立使用。依赖许可证见源码仓库的 THIRD_PARTY_NOTICES.md。
 
-第三方组件保留各自许可证，详见程序内的开源许可及安装目录中的许可文件。请仅管理已获授权的服务器，不要为兼容而关闭服务器 NLA 或系统防护。
+本版通过本地类型、构建、SSH/SFTP、FreeRDP 协议、Windows OLE 数据对象和成品结构验证；实际生产 Windows 服务器与资源管理器交互、安装向导及全新 Windows 环境仍需使用环境确认。发布前后附件摘要与匿名下载另行核验，不等同于替用户安装或部署后台。
